@@ -8,7 +8,8 @@
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <script>
 var a = [ 9, 20, 99, 80, 7, 0, 1000, 55, 3];
-a.sort = function (){
+
+a.sort = function (){ //defind a method "sort()"
 	var arr = this;
 	for (i = 0; i <= arr.length-1; i++){
     	if (arr[i] > arr[i+1]){
@@ -21,7 +22,7 @@ a.sort = function (){
 };
 
 a.sort(); //execute sort() method
-console.log(a); //[0, 3, 7, 9, 20, 55, 80, 99, 1000]
+console.log(a); //result: [0, 3, 7, 9, 20, 55, 80, 99, 1000]
 </script>
 </body>
 </html>
