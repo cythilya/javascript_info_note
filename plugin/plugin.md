@@ -33,7 +33,7 @@
 	function init(){
 		//初始化
 		...
-	}:
+	};
 		
 	function suspend(){
 		//暫停	
