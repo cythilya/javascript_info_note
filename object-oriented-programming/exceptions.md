@@ -61,7 +61,7 @@
 ---
 ##Reference
 - [Object Oriented Programming | JavaScript Tutorial](http://javascript.info/tutorial/object-oriented-programming)
-- [](http://javascript.info/tutorial/exceptions)
+- [Exceptions | JavaScript Tutorial](http://javascript.info/tutorial/exceptions)
 
 <!--
 ##Agenda
