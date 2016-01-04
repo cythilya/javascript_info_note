@@ -44,11 +44,19 @@
 
 由錯誤訊息可知，doB這個function沒有被定義，因此無法執行而出錯。
 
-##未完代續...
+##The full form of try..catch..finally
+
+	try {
+	   //try statemenets ..
+	} 
+	catch(exception) {
+	   //catch statements ..
+	} 
+	finally {
+	   //finally statements ..
+	}
 
 <!--
-###Obtaining the stack
-##The full form of try..catch..finally
 ###try..catch..finally and return
 ##The throw statement
 ###A validator example
@@ -57,6 +65,8 @@
 ##Exception analysis and rethrow
 ##Summary
 -->
+
+##未完代續...
 
 ---
 ##Reference
