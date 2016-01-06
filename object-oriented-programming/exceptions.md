@@ -56,6 +56,8 @@
 	   //finally statements ..
 	}
 
+首先執行try區塊內的程式碼，如果沒有出錯，則catch區塊會被忽略不執行。如果有錯誤產生，則exception會被設定值，catch區塊會被執行。無論如何，最後，finally區塊都會被執行。
+
 <!--
 ###try..catch..finally and return
 ##The throw statement
