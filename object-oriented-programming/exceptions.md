@@ -89,33 +89,92 @@
 	  alert("Caught: " + e);
 	}
 
-<!--
 ###A validator example
-###Changes in the usage pattern
-###Comparison
-##Exception analysis and rethrow
-##Summary
-「」
--->
+假設我們需要一個年齡的驗證工具，幫助我們檢查使用者輸入的年齡是否合法。如果沒有輸入任何東西，則跳出；如果輸入非文字，則丟出錯誤；如果是數字，則顯示可接受的訊息。
 
-##未完代續...
+	function validatorAge(age){
+		if(age === ''){
+			return; //no age to valid
+		}
+		age = +age;
+	
+		if(isNaN(age)){
+			throw {
+				name: 'BadAge',
+				message: 'Age out of range'
+			}
+		}
+	}
+	
+	try {
+		var age = prompt('Enter your age');
+		validatorAge(age);
+		alert('The age is accepted');
+	}
+	catch(e){
+		alert('Error: ' + e.message);
+	}
+
+###Changes in the usage pattern
+除了try...catch的用法，當然我們也可以使用error-checking的方法。
+
+	function validatorAge(age){
+		if(age === ''){
+			return; //no age to valid
+		}
+		age = +age;
+	
+		if(isNaN(age)){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+
+	var value = prompt('Enter your age'),
+	    error = validatorAge(value);
+	
+	if(!error){
+		//process error
+		alert('Invalid error!');
+	}
+	else{
+		//success
+		alert('The age is accepted');
+	}
+
+###Comparison
+- try..catch較簡潔，可讀性較高。
+- error-checking無法檢查所有的錯誤，但try..catch確可捕捉所有錯誤，所以try..catch是唯一萬無一失的方法。尤其在檢查瀏覽器相容的錯誤的時候。
+
+##Exception analysis and rethrow
+有時候，程式碼可能會產生不同種類的錯誤。因此，我們使用「if」來選擇適當的動作。結構類似如下：
+
+	try {
+	  // 1. do smth
+	} 
+	catch(e) {
+		if (e instanceof ValidationError) {
+	    	// 2.1 process e
+		} 
+		else if (e instanceof PermissionError) {
+	    	// 2.2 process e
+		} 
+		else {
+	    	// 3. we don't know how to deal with e
+			throw e
+	  	}
+	}
+
+在try區塊可能丟出了某些錯誤，有些錯誤是我們已知的，例如：ValidationError和PermissionError，然後去處理這些已知的e。但有些我們並不確定，因此直接丟出e。這裡丟出的e，需要由外層的try..catch來處理。
+
+##Summary
+- try..catch..finally將多種檢查合併在一個try區塊內執行，並將error-handlin分散在catch區塊來做錯誤的處理。
+- try..catch..finally能捕捉和處理所有的錯誤。丟出的錯誤可使用JavaScript-generated或自行定義的。
+- 錯誤建議繼承基本錯誤物件。因此，可用instanceof來檢查錯誤的類型，如上範例檢查ValidationError和PermissionError。
 
 ---
 ##Reference
-- [Object Oriented Programming | JavaScript Tutorial](http://javascript.info/tutorial/object-oriented-programming)
 - [Exceptions | JavaScript Tutorial](http://javascript.info/tutorial/exceptions)
-
-<!--
-##Agenda
-- Check-first error handling
-- The try..catch construct
-	- Obtaining the stack
-- The full form of try..catch..finally
-	- try..catch..finally and return
-- The throw statement
-	- A validator example
-	- Changes in the usage pattern
-	- Comparison
-- Exception analysis and rethrow
-- Summary
--->
+- [Object Oriented Programming | JavaScript Tutorial](http://javascript.info/tutorial/object-oriented-programming)
