@@ -162,3 +162,4 @@ hasOwnProperty method 允許檢查其屬性是否屬於某個物件或其prototy
 ---
 ####參考資料
 - [Prototypal inheritance | JavaScript Tutorial](http://javascript.info/tutorial/inheritance)
+- [JavaScript - Code Reuse Patterns](http://cythilya.blogspot.tw/2015/06/javascript-code-reuse-patterns.html)
