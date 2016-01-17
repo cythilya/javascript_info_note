@@ -68,14 +68,96 @@ rabbit.eat() 這個method經由兩個步驟被執行：
 因此，幾乎所有主要瀏覽器都允許「讀取」`__proto__`的值，但不允許修改它。
 
 ## The prototype
+有一個較好且跨瀏覽器的方法來設定 `__proto__`，而這個方法需要建構式的幫忙來設定 `__proto__` 的值。
 
-
-
+	var animal = { eats: true };
+	
+	function Rabbit(name){
+		this.name = name;
+	};
+	
+	Rabbit.prototype = animal; //set __proto__ = animal for all objects created by new Rabbit
+	
+	var rabbit = new Rabbit('John');
+	
+	console.log(rabbit.eats); //true
 
 ## Crossbrowser Object.create(proto)
+Object.create(proto)允許直接繼承給予的物件，可以使用我們自己撰寫的method - inherit 來模仿它而達到一樣的功能。因此使用 inherit(animal)的效果等同於使用 Object.create(animal) - 建立一個新的空物件，且 `object.__proto__ = animal` 。
+
+	function inherit(proto){
+		function F(){}; //(1)
+		F.prototype = proto; //(2)
+		return new F; //(3)
+	};
+	
+	var animal = { eats: true },
+		rabbit = inherit(animal);
+	
+	console.log(rabbit.eats);
+
+解說如下：
+
+1. 建立新函式 F，新函式 F由於沒有被設定任何值，因此F會建立一個空的物件。
+2. F.prototype被設定值為proto。
+3. 回傳由F建立的空物件。空物件的prototype為proto，意即 `object.__proto__ = proto` 。
+
 ## hasOwnProperty
+hasOwnProperty method 允許檢查其屬性是否屬於某個物件或其prototype。
+
+	function Rabbit(name){
+		this.name = name;
+	};
+	
+	Rabbit.prototype = { eats: true };
+	
+	var rabbit = new Rabbit('John');
+	
+	console.log(rabbit.hasOwnProperty('eats')); //false, in prototype
+	console.log(rabbit.hasOwnProperty('name')); //true, in object
+
 ## Looping with/without inherited properties
+將所有的屬性利用for loop顯示出來。
+
+	function Rabbit(name) {
+	  this.name = name;
+	};
+	 
+	Rabbit.prototype = { eats: true };
+	 
+	var rabbit = new Rabbit('John');
+	 
+	for(var p in rabbit) {
+	  console.log (p + " = " + rabbit[p]); // outputs both "name" and "eats"
+	}
+
+
+利用method hasOwnProperty來篩選只有物件本身擁有的屬性，而非在prototype中。
+
+	function Rabbit(name) {
+	  this.name = name;
+	};
+	 
+	Rabbit.prototype = { eats: true };
+	 
+	var rabbit = new Rabbit('John');
+	 
+	for(var p in rabbit) {
+	  if (!rabbit.hasOwnProperty(p)) continue; // filter out "eats"
+	  console.log (p + " = " + rabbit[p]); // outputs only "name"
+	}
+
 ## Summary
+- 使用屬性 `__proto__` 來實作繼承
+	- 如果在物件中找不到此屬性，則會沿著 `__proto__` 到父物件尋找此屬性的值。
+	- this的值會被設定給物件，而非prototype。
+	- 屬性設定：obj.prop = val；屬性刪除：delete obj.prop。 
+- 管理 `__proto__`
+	- Firefox/Chrome可以直接存取 `__proto__` ，而大多數現行的瀏覽器只提供讀取(利用Object.getPrototypeOf(obj))而沒有修改的權限。
+	- 給予特定prototype的空物件可使用Object.create(proto)來達到繼承的目的，或使用自行實作的function。
+- 其它method
+- for..in loop 可列出所有此object自己和prototype的屬性。
+- obj.hasOwnProperty(prop) 在屬性屬於此物件本身(而非屬於prototype)時會回傳true。
 
 ---
 ####參考資料
