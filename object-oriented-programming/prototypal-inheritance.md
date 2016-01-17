@@ -156,8 +156,8 @@ hasOwnProperty method 允許檢查其屬性是否屬於某個物件或其prototy
 	- Firefox/Chrome可以直接存取 `__proto__` ，而大多數現行的瀏覽器只提供讀取(利用Object.getPrototypeOf(obj))而沒有修改的權限。
 	- 給予特定prototype的空物件可使用Object.create(proto)來達到繼承的目的，或使用自行實作的function。
 - 其它method
-- for..in loop 可列出所有此object自己和prototype的屬性。
-- obj.hasOwnProperty(prop) 在屬性屬於此物件本身(而非屬於prototype)時會回傳true。
+	- for..in loop 可列出所有此object自己和prototype的屬性。
+	- obj.hasOwnProperty(prop) 在屬性屬於此物件本身(而非屬於prototype)時會回傳true。
 
 ---
 ####參考資料
