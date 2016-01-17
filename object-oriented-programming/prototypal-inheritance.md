@@ -44,10 +44,34 @@ rabbit.eat() 這個method經由兩個步驟被執行：
 - 對於物件來說，`__proto__`被稱為prototype(原型)。因此，animal是rabbit的prototype。
 
 ## Object.create, Object.getPrototypeOf
+「`__proto__`」並非標準的屬性，只有Chrome和Firefox支援，其它瀏覽器則是隱藏此屬性於內部。所有目前流行的瀏覽器(除了Opera，IE則是版本9以上)，對此屬性支援兩個標準method - Object.create和Object.getPrototypeOf。  
 
+### Object.create(proto[, props])
+使用animal `__proto__` 建立一個空物件rabbit，而且可在rabbit中建立自己的屬性jumps。
 
+	var animal = { eats: true },
+		rabbit = Object.create(animal);
+	
+	rabbit.jumps = true;
+	
+	console.log(rabbit.eats); //true
+	console.log(rabbit.jumps); //true
+
+### Object.getPrototypeOf(obj)
+回傳 `obj.__proto__` 的值。這個method是在標準規格裡面的，所以不支援 `__proto__` 的瀏覽器仍可使用此method。
+
+	var animal = { eats: true },
+		rabbit = Object.create(animal);
+	
+	console.log(Object.getPrototypeOf(rabbit) === animal); //true
+
+因此，幾乎所有主要瀏覽器都允許「讀取」`__proto__`的值，但不允許修改它。
 
 ## The prototype
+
+
+
+
 ## Crossbrowser Object.create(proto)
 ## hasOwnProperty
 ## Looping with/without inherited properties
