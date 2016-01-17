@@ -16,7 +16,37 @@
 
 「 `__proto__`」是一個連接子物件和父物件的link，讓interpreter在子物件找不到屬性時，可以依循這條link往父物件繼續尋找。
 
+由以上的範例可知，我們可以在animal放置一個method，然後子物件rabbit也可以使用這個method。
+
+	var animal = { 
+		eat: function(){
+			console.log("I'm full");
+			this.full = true;
+		}
+	},
+	rabbit = { 
+		jump: function(){
+			//do something
+		} 
+	};
+	 
+	rabbit.__proto__ = animal;
+	rabbit.eat(); //I'm full
+
+rabbit.eat() 這個method經由兩個步驟被執行：
+
+- Step 1：Interpreter在rabbit物件中尋找eat() method，但沒有找到，因此循著`rabbit.__proto__`往父物件animal尋找，並且找到了。
+- Step 2：此時的eat() method中的this是指rabbit物件。
+
+我們得到以下結論：
+
+- 物件呼叫其父物件的method，其中的this會被設定給這個物件。這就是繼承的意思。
+- 對於物件來說，`__proto__`被稱為prototype(原型)。因此，animal是rabbit的prototype。
+
 ## Object.create, Object.getPrototypeOf
+
+
+
 ## The prototype
 ## Crossbrowser Object.create(proto)
 ## hasOwnProperty
