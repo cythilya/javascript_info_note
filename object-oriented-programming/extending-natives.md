@@ -84,3 +84,7 @@ Array的method常被借用來處理類似Array的物件。
 - Native JavaScript物件將method存在prototype中。
 - Native prototypes可以被繼承或擴充。
 - 修改頂端的Object.prototype會破壞for..in loops，因此不建議這麼做。但可實作一些先進的method而讓舊瀏覽器支援這些好用的方法，例如：Object.create、Object.keys、 Function.prototype.bind等。
+
+---
+####References
+- [Extending Natives](http://javascript.info/tutorial/native-prototypes)
