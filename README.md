@@ -5,3 +5,4 @@
 	- [Exceptions](object-oriented-programming/exceptions.md) 
 	- [Prototypal Inheritance](object-oriented-programming/prototypal-inheritance.md)
 	- [Extending Natives](object-oriented-programming/extending-natives.md)
+	- [The "constructor" property](object-oriented-programming/constructor.md)
