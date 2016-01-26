@@ -45,7 +45,12 @@ interpreter建立一個新的函數物件，而此物件的prototype屬性也被
 ## Summary
 - 物件有內建的屬性「constructor」，意即參考「建立此物件的function」。
 - 當prototype被修改，其constructor也會丟失。
-- 如果我們希望在繼承後擁有正確的constructor，就必須自行設定。
+- 如果我們希望在繼承後擁有正確的constructor，就必須自行設定，如下：
+
+		function Rabbit(){};
+		Rabbit.prototype = { constructor: Rabbit } 
+		var rabbit = new Rabbit();
+		console.log(rabbit.constructor == Rabbit); //true
 
 ---
 #### References
