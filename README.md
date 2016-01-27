@@ -7,3 +7,5 @@
 	- [Extending Natives](object-oriented-programming/extending-natives.md)
 	- [The "constructor" property](object-oriented-programming/constructor.md)
 	- [The "instanceof" operator](object-oriented-programming/instanceof.md)
+	- OOP patterns
+		- [General Concepts](object-oriented-programming/general-concepts.md)
