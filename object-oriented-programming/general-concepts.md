@@ -20,6 +20,6 @@ class自己本身和繼承的物件都可以存取。
 不用任何修改即可將Menu物件的程式碼可以轉換為TreeMenu物件或SlideMenu物件。
 
 ---
-####References
+#### References
 - [General concepts](http://javascript.info/tutorial/oop-concepts)
 
