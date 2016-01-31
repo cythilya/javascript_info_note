@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>$title</title>
+</head>
+<body>
+<script>
+//Pseudo-class declaration
+// function Animal(name){
+// 	this.name = name;
+// };
+
+// Animal.prototype = {
+//   canWalk: true,
+//   sit: function(){
+//   	this.canWalk = false;
+//   	console.log(this.name + ' sits down.');
+//   }
+// };
+
+// var animal = new Animal('Pet'); // (1)
+// console.log(animal.canWalk); // true
+// animal.sit(); // (2)
+// console.log(animal.canWalk); //false
+ 
+//Inheritance
+// function inherit(proto) {
+//   function F() {};
+//   F.prototype = proto;
+//   return new F;
+// };
+
+// function Animal(name){
+// 	this.name = name;
+// };
+
+// Animal.prototype = {
+//   canWalk: true,
+//   sit: function(){
+//   	this.canWalk = false;
+//   	console.log(this.name + ' sits down.');
+//   }
+// };
+
+// function Rabbit(name){
+// 	this.name = name;
+// };
+
+// Rabbit.prototype = inherit(Animal.prototype);
+
+// Rabbit.prototype.jump = function(){
+// 	this.canWalk = true;
+// 	console.log(this.name + ' jumps!');
+// };
+ 
+// var rabbit = new Rabbit('John');
+// console.log(rabbit.canWalk); //true
+// rabbit.sit(); //John sits down. 
+// console.log(rabbit.canWalk); //false
+// rabbit.jump(); //John jumps!
+
+//Calling superclass constructor
+// function Animal(name){
+//   this.name = name;
+// };
+
+// Animal.prototype = {
+//   canWalk: true,
+//   sit: function(){
+//     this.canWalk = false;
+//     console.log(this.name + ' sits down.');
+//   }
+// };
+
+// function Rabbit(name) {
+// 	Animal.apply(this, arguments);
+// };
+
+// var rabbit = new Rabbit('Nick');
+// console.log(rabbit.canWalk);
+// console.log(rabbit.sit());
+// console.log(rabbit.canWalk);
+
+//Overriding a method (polymorphism)
+// function inherit(proto) {
+//   function F() {};
+//   F.prototype = proto;
+//   return new F;
+// };
+
+// function Animal(name){
+// 	this.name = name;
+// };
+
+// Animal.prototype = {
+//   canWalk: true,
+//   sit: function(){
+//   	this.canWalk = false;
+//   	console.log(this.name + ' sits down.');
+//   }
+// };
+
+// function Rabbit(name){
+// 	this.name = name;
+// };
+
+// Rabbit.prototype = inherit(Animal.prototype);
+
+// var rabbit = new Rabbit('John');
+
+// Rabbit.prototype.sit = function() {
+//   console.log(this.name + ' sits in a rabbity way.');
+// }
+
+// rabbit.sit(); //使用覆寫後的method
+
+// Rabbit.prototype.sit = function() {
+//   console.log('calling superclass sit:');
+//   Animal.prototype.sit.apply(this, arguments); //使用尚未被覆寫的method
+// }
+
+// rabbit.sit();
+
+//Sugar: removing direct reference to parent
+// function extend(Child, Parent){
+//   Child.prototype = inherit(Parent.prototype);
+//   Child.prototype.constructor = Child;
+//   Child.parent = Parent.prototype;
+// };
+
+// function inherit(proto) {
+//   function F() {};
+//   F.prototype = proto;
+//   return new F;
+// };
+
+// function Animal(name){
+// 	this.name = name;
+// };
+
+// Animal.prototype = {
+//   canWalk: true,
+//   sit: function(){
+//   	this.canWalk = false;
+//   	console.log(this.name + ' sits down.');
+//   },
+//   run: function(){
+//   	this.canWalk = false;
+//   	console.log(this.name + ' run fast.');  	
+//   }
+// };
+
+// function Rabbit(name) {
+// 	this.name = name;
+//   Rabbit.parent.constructor.apply(this, arguments); //super constructor
+// };
+ 
+// extend(Rabbit, Animal);
+ 
+// Rabbit.prototype.run = function() {
+//     Rabbit.parent.run.apply(this, arguments); //parent method
+// };
+
+// var rabbit = new Rabbit('John');
+// console.log(rabbit.canWalk); //true
+// rabbit.sit(); //John sits down. 
+// console.log(rabbit.canWalk); //false
+// rabbit.run(); //John run fast.
+
+//Summary
+function extend(Child, Parent){
+  Child.prototype = inherit(Parent.prototype);
+  Child.prototype.constructor = Child;
+  Child.parent = Parent.prototype;
+};
+
+function inherit(proto) {
+  function F() {};
+  F.prototype = proto;
+  return new F;
+};
+
+// --------- the base object ------------
+function Animal(name) {
+  this.name = name;
+};
+ 
+// methods
+Animal.prototype.run = function() {
+  console.log(this + " is running!");
+};
+ 
+Animal.prototype.toString = function() {
+  return this.name;
+};
+  
+// --------- the child object -----------
+function Rabbit(name) {
+  Rabbit.parent.constructor.apply(this, arguments);
+};
+ 
+// inherit
+extend(Rabbit, Animal);
+ 
+// override
+Rabbit.prototype.run = function() {
+  Rabbit.parent.run.apply(this);
+  console.log(this + " bounces high into the sky!");
+}
+ 
+var rabbit = new Rabbit('Jumper');
+rabbit.run();
+
+</script>
+</body>
+</html>
