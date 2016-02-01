@@ -11,4 +11,5 @@
 		- [Pseudo-Classical Pattern](object-oriented-programming/pseudo-classical-pattern/pseudo-classical-pattern.md)
 		- [All-in-one Constructor Pattern](object-oriented-programming/all-in-one-constructor-pattern.md)
 		- [Factory Constructor Pattern](object-oriented-programming/factory-constructor-pattern.md)
-	- [Exceptions](object-oriented-programming/exceptions.md) 
+	- [Early and Late Binding](object-oriented-programming/early-and-late-binding.md)
+        - [Exceptions](object-oriented-programming/exceptions.md) 
