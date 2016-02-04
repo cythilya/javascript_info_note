@@ -1,6 +1,6 @@
 # The "constructor" property
-物件有內建的屬性「constructor」，意即參考「建立此物件的function」。
-## Example
+物件有內建的屬性「constructor」，意即「參考建立此物件的function」。
+## 範例
 我們來建立一個簡單的constructor，然後看看新的物件是否有正確的constructor的值。
 
     function Rabbit(){};
@@ -53,5 +53,5 @@ interpreter建立一個新的函數物件，而此物件的prototype屬性也被
 		console.log(rabbit.constructor == Rabbit); //true
 
 ---
-#### References
+#### 參考資料
 - [The "constructor" property](http://javascript.info/tutorial/constructor)
