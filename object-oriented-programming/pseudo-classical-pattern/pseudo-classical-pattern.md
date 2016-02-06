@@ -19,7 +19,7 @@
 	animal.sit(); // (2)
 	console.log(animal.canWalk); //false
 
-1. 當「new Animal(name)」被呼叫的時候，新物件收到 參考到Animal.prototype的 `__proto__`。
+1. 當「new Animal(name)」被呼叫的時候，新物件收到參考到Animal.prototype的 `__proto__`。
 2. `animal.sit` 改變 `animal.canWalk` 的值，所以這個animal物件的canWalk為false，但其餘的仍為true。
 
 ### 備註
@@ -64,14 +64,12 @@
 	console.log(rabbit.canWalk); //false
 	rabbit.jump(); //John jumps!
 
-<!--
 ## Calling superclass constructor
 「superclass」這個建構子不是被自動呼叫的，我們使用「apply」將Animal這個函式套用到目前的物件上。這樣就能將Animal建構子的內文狀態設給目前使用的物件。
 
 	function Rabbit(name) {
 	  Animal.apply(this, arguments);
 	};
--->
 
 ## Overriding a method (polymorphism)
 當method被覆寫，我們仍可能會希望能呼叫之前尚未被覆寫的method。
