@@ -14,10 +14,7 @@
 	animal.run();
 
 ## Inheritance
-To create a Rabbit, inheriting from Animal:
-
-- First apply Animal constructor to this. We’ve got an Animal
-- Modify this, add more methods to get a Rabbit.
+建立Rabbit這個建構子，並繼承Animal。
 
 	function Rabbit(name){
 	  Animal.apply(this, arguments);
@@ -82,3 +79,7 @@ protected method並沒有實質上的支援，可參考[Private/protected method
 - 在All-in-one Constructor Pattern無法使用 `rabbit instanceof Animal` ，因為沒有做設定prototype的動作。
 - 速度較慢且需要較多記憶體。由於每一個物件都擁有自己的method，而非使用prototype共享。
 - 實作private method和property，是較為安全和快速的。
+
+---
+####References
+- [All-in-one constructor pattern | JavaScript Tutorial](http://javascript.info/tutorial/all-one-constructor-pattern)
