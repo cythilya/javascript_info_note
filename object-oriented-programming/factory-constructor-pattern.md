@@ -103,4 +103,4 @@ public method可以被外部呼叫，例如；`this.move()`，但不能被privat
 ---
 ####References
 - [Factory constructor pattern | JavaScript Tutorial](http://javascript.info/tutorial/factory-constructor-pattern)
-<!-- - [JavaScript Object Oriented Programming - Factory Constructor Pattern 筆記](https://github.com/cythilya/javascript-info/blob/master/object-oriented-programming/factory-constructor-pattern.md)：持續更新中... -->
+<!--- [JavaScript Object Oriented Programming - Factory Constructor Pattern 筆記](https://github.com/cythilya/javascript-info/blob/master/object-oriented-programming/factory-constructor-pattern.md)：持續更新中... -->
