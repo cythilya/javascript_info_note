@@ -1,8 +1,8 @@
 # Factory Constructor Pattern
 「Factory Constructor Pattern」不使用new來宣告新物件，新物件用function call來建立，如下：
 
-var animal = Animal('fox');
-var rabbit = Rabbit('rab');
+	var animal = Animal('fox');
+	var rabbit = Rabbit('rab');
 
 <!-- more -->
 
