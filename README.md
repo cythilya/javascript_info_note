@@ -13,5 +13,6 @@
 		- [Factory Constructor Pattern](object-oriented-programming/factory-constructor-pattern.md)
 	- [Early and Late Binding](object-oriented-programming/early-and-late-binding.md)
 	- [Exceptions](object-oriented-programming/exceptions.md) 
-- [方法(method)](method/method.md)
-- [Plugin的撰寫](plugin/plugin.md)
+- 其它
+	- [方法(method)](method/method.md)
+	- [Plugin的撰寫](plugin/plugin.md)
