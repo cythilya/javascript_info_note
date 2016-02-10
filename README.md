@@ -1,6 +1,6 @@
 #Javascript Info
-- [方法(method)](method/method.md)
-- [Plugin的撰寫](plugin/plugin.md)
+- Document and Events
+	- [Adding a script to HTML](document-and-events/adding-a-script-to-html.md)
 - Object Oriented Programming
 	- [Prototypal Inheritance](object-oriented-programming/prototypal-inheritance.md)
 	- [Extending Natives](object-oriented-programming/extending-natives.md)
@@ -13,3 +13,5 @@
 		- [Factory Constructor Pattern](object-oriented-programming/factory-constructor-pattern.md)
 	- [Early and Late Binding](object-oriented-programming/early-and-late-binding.md)
 	- [Exceptions](object-oriented-programming/exceptions.md) 
+- [方法(method)](method/method.md)
+- [Plugin的撰寫](plugin/plugin.md)
