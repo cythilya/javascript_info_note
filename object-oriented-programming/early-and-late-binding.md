@@ -176,5 +176,5 @@ new Menu(document.createElement('div'));
 
 ---
 ####References
-- [Early and Late Binding](http://javascript.info/tutorial/binding)
+- [Early and Late Binding | JavaScript Tutorial](http://javascript.info/tutorial/binding)
 - [Function.prototype.bind()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
