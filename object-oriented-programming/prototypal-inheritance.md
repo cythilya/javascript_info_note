@@ -147,6 +147,15 @@ hasOwnProperty method 允許檢查其屬性是否屬於某個物件或其prototy
 	  console.log (p + " = " + rabbit[p]); // outputs only "name"
 	}
 
+## What's the difference of "__proto__" and "prototype"?
+`__proto__` is the actual object that is used in the lookup chain to resolve methods, etc.  prototype is the object that is used to build `__proto__` when you create an object with new. (see [__proto__ VS. prototype in JavaScript](http://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript) and [JavaScript difference between __proto__ and prototype](https://coderwall.com/p/j1khtg/javascript-difference-between-__proto__-and-prototype))
+
+	function Foo(){};
+	( new Foo ).__proto__ === Foo.prototype; //true
+	( new Foo ).prototype === undefined; //true
+
+建構子無法直接設定internal屬性，只能透過property來建立。意即，使用建構子設定prototype，就要使用property來建立。
+
 ## Summary
 - 使用屬性 `__proto__` 來實作繼承
 	- 如果在物件中找不到此屬性，則會沿著 `__proto__` 到父物件尋找此屬性的值。
@@ -160,6 +169,8 @@ hasOwnProperty method 允許檢查其屬性是否屬於某個物件或其prototy
 	- obj.hasOwnProperty(prop) 在屬性屬於此物件本身(而非屬於prototype)時會回傳true。
 
 ---
-####參考資料
+#### 參考資料
 - [Prototypal inheritance | JavaScript Tutorial](http://javascript.info/tutorial/inheritance)
 - [JavaScript - Code Reuse Patterns](http://cythilya.blogspot.tw/2015/06/javascript-code-reuse-patterns.html)
+- [__proto__ VS. prototype in JavaScript](http://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript)
+- [JavaScript difference between __proto__ and prototype](https://coderwall.com/p/j1khtg/javascript-difference-between-__proto__-and-prototype)
